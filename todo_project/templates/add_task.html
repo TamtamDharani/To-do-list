@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px 0;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .low {
+            color: green;
+        }
+
+        .medium {
+            color: orange;
+        }
+
+        .high {
+            color: red;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Task</h1>
+        <form method="post">
+            <label>Description:</label>
+            <input type="text" name="description" required><br>
+
+            <label>Due Date (YYYY-MM-DD):</label>
+            <input type="text" name="due_date"><br>
+
+            <label>Priority:</label>
+            <select name="priority">
+                <option value="low" selected>Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select><br>
+
+            <input type="submit" value="Add Task">
+        </form>
+        <br>
+        <a href="{{ url_for('home') }}">🔙 Back to Home</a>
+    </div>
+</body>
+</html>

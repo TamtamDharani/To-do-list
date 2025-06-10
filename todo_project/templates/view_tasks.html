@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head><title>{{ filter_name }}</title></head>
+<body>
+    <h1>{{ filter_name }}</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task.description }} - Due: {{ task.due_date or 'No due date' }} - Priority: {{ task.priority }} - Completed: {{ 'Yes' if task.completed else 'No' }}
+            </li>
+        {% else %}
+            <li>No tasks found.</li>
+        {% endfor %}
+    </ul>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px 10px 0 0;
+            color: #007bff;
+            texxt-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>

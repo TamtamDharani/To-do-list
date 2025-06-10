@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /* Remove background color */
+            /* background-color: #f0f4f8; */
+            margin: 0;
+            padding: 20px;
+            color: #333;
+
+            /* Background image added */
+            background-image: url("{{ url_for('static', filename='bg1.png') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background-color: #ffffffcc; /* Slightly transparent white to see bg */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #e9f0f5;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .low {
+            color: green;
+        }
+
+        .medium {
+            color: orange;
+        }
+
+        .high {
+            color: red;
+        }
+
+        a.button {
+            display: inline-block;
+            margin: 10px 10px 0 0;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        a.button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Todo List</h1>
+
+        <ul>
+            {% for task in tasks %}
+                <li class="{% if task.completed %}completed{% endif %}">
+                    {{ loop.index }}. {{ task.description }}
+                    {% if task.due_date %} | Due: {{ task.due_date }}{% endif %}
+                    | Priority: <span class="{{ task.priority }}">{{ task.priority|capitalize }}</span>
+                </li>
+            {% else %}
+                <li>No tasks found.</li>
+            {% endfor %}
+        </ul>
+
+        <a class="button" href="{{ url_for('add') }}">➕ Add Task</a>
+        <a class="button" href="{{ url_for('mark_completed') }}">✔️ Mark as Complete</a>
+        <a class="button" href="{{ url_for('delete_task') }}">🗑️ Delete Task</a>
+
+    </div>
+</body>
+</html>

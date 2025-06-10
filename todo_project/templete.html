@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Add Task</title></head>
+<body>
+    <h1>Add Task</h1>
+    <form method="POST">
+        <label>Description:</label><br>
+        <input type="text" name="description" required><br>
+        <label>Due Date (optional):</label><br>
+        <input type="date" name="due_date"><br><br>
+        <button type="submit">Add Task</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back to tasks</a>
+</body>
+</html>
